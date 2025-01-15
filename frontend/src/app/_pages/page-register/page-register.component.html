@@ -1,0 +1,37 @@
+<app-layout-center>
+  <mat-card appearance="outlined" class="w-[300px]">
+    <mat-card-content>
+      <div>
+        <div class="flex justify-center mb-2">
+          <img src="https://targetsoftware.com.br/wp-content/uploads/2020/09/logo_normal-new.png" />
+        </div>
+        <div class="flex justify-center mb-2">
+          <span class="text-lg font-medium">Formulário de Registro</span>
+        </div>
+        <div *ngIf="isLoading" class="flex justify-center">
+          <mat-spinner></mat-spinner>
+        </div>
+        <div *ngIf="!isLoading" class="">
+          <mat-form-field class="w-full" *ngIf="!isRegistered">
+            <mat-label>Username</mat-label>
+            <input matInput placeholder="Ex. Nome de Usuário" [(ngModel)]="loginFormInfos.username">
+          </mat-form-field>
+
+          <mat-form-field class="w-full" *ngIf="!isRegistered">
+            <mat-label>Senha</mat-label>
+            <input matInput type="password" placeholder="Ex. Pizza" [(ngModel)]="loginFormInfos.password">
+          </mat-form-field>
+
+          <div class="flex justify-center mb-2">
+            <span class="text-lg font-medium">Usuário registrado com sucesso</span>
+          </div>
+
+          <div class="flat space-y-4">
+            <button mat-flat-button class="w-full" (click)="register()" *ngIf="!isRegistered">Registrar</button>
+            <button mat-stroked-button class="w-full" [routerLink]="['/']">Voltar para Login</button>
+          </div>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</app-layout-center>
